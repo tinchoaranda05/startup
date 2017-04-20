@@ -1,9 +1,10 @@
 /*  Selectors and properties done! Keep it going.  */
 
 
-html {
+html * {					/*  changing to global font weight. exercise 6 by the way. */
   font-family: sans-serif;
   font-size: 14px;
+  font-weight: bold;
   
 }
 
@@ -25,7 +26,7 @@ footer {
 	text-align: center;
 }
 
-/* Specifity! Now we're geting in to it.  */
+/* Specificity! Now we're geting in to it.  */
 
 .header{
 	font-size: 46px !important; /* one way to override. Not good comments about it. */
@@ -46,3 +47,13 @@ footer {
 .sidebar{
 	font-size: 10px;
 }
+
+[class*="a"] {
+		background-color: blue;      /* You can find the exercise 5 here. 
+									Cause if not, your color may disappear  */
+}
+
+[class$="r"] {
+	background-color: #ff00ff; /*  exercise 4 done! magenta is on! */
+}
+

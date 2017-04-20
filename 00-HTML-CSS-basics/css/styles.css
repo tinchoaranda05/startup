@@ -15,15 +15,32 @@ header {
 
 nav {
 	background-color: #9acd32;
+	position: absolute;
+  	left: 0px;
+  	width: 200px;
+  	height: 700px;
 }
 
 aside {
 	background-color: #9acd32;
+	width: 200px;
+  	height: 700px;
 }
 
 footer {
 	background-color: #fafad2;
 	text-align: center;
+	position: fixed;
+  	bottom: 0;
+  	left: 0;
+  	height: 70px;
+  	background-color: white;
+  	width: 100%;
+}
+
+h5 {
+	height: 150px;
+	width: 600px;
 }
 
 /* Specificity! Now we're geting in to it.  */

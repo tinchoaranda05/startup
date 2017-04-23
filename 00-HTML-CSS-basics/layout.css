@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #555;
 }
 
@@ -81,16 +81,23 @@ img {
 /* Can't make the screen just for one image at time. Need to figurate out how to
 change that property and I think thats it. */
 
+
+/* fixed.. ish.. I left the new box's width exactly as its image but not 
+with image's height. */
+
 .screen { 
   background-color: rgba(0,0,0,0.5);
   position: absolute;
+  width: 100%;
+  max-width: 380px;
   opacity: 0;
   z-index: 1000;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.9s ease-in-out;
   display: block;
+  color: #d3d3d3;
 }
 .column:hover .screen{
-  opacity: 1
+  opacity: 1;
 }
 
 a {

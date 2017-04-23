@@ -40,7 +40,7 @@ body {
 @media (min-width: 40rem) {
   .column {
     float: left;
-    margin: 0;
+    margin: 10;
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -87,11 +87,14 @@ change that property and I think thats it. */
   opacity: 0;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
+  display: block;
 }
 .column:hover .screen{
   opacity: 1
 }
 
-.fondo {
-  background-color: #ff00ff;
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
 }

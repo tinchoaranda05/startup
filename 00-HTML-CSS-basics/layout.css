@@ -29,6 +29,8 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  display: block;
+  position: relative;
 
 }
 
@@ -73,6 +75,7 @@ body {
 img {
   width: 100%;
   max-width: 450px;
+  display: block;
 }
 
 /* Can't make the screen just for one image at time. Need to figurate out how to
@@ -80,16 +83,15 @@ change that property and I think thats it. */
 
 .screen { 
   background-color: rgba(0,0,0,0.5);
-  left: 0;
-  top: 0;
-  border-radius: 0;
-  height: 100%;
-  width: 100%;
   position: absolute;
-  opacity: 1;
+  opacity: 0;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
 }
-.screen:hover {
+.column:hover .screen{
   opacity: 1
+}
+
+.fondo {
+  background-color: #ff00ff;
 }

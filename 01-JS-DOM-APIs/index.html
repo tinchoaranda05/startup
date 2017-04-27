@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootcamp Globant</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+    <script>
+      function fadein() {
+        let elem = document.getElementById('excercise4');
+        elem.style.opacity = "1";
+      }
+    </script>
+
+  </head>
+
+  <body onload=" fadein()">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Practice!</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="excercise one">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="text-center">Excercise 1</h2>
+            <div class="separador"></div>
+            <p class="text-center">Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="image_0.png" class="img-circle img-thumbnail center-block" alt="Logo html" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden">
+      <div class="container">
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+          <p>hello, world!</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" id="excercise4">
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+          <p>Ex.4 fade in!</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="excercise5">
+      <div class="row">
+        <div class="col-md-12">
+        <button class="btn btn-default" onclick="window.location.href='index.html'">Refresh</button>
+        </div>
+      </div>
+    </div>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+             <button class="btn btn-default" type="button" onclick="loadXMLDoc()">excercise6</button>
+
+              <p id="excercise6"></p>
+
+              <script>
+              function loadXMLDoc() {
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("excercise6").innerHTML =
+                    this.responseText;
+                  }
+                };
+                xhttp.open("GET", "http://api.icndb.com/jokes/random", true);
+                xhttp.send();
+              }
+              </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+    <section>
+      <div class="container" id="exercise8">
+        <div class="row">
+          <div class="col-md-6">
+             <button class="btn btn-default" type="button" onclick="llamadoAjax()">excercise7</button>
+
+            <p id="excercise7"></p>
+
+            <script>
+            function llamadoAjax(){
+
+              const data= document.getElementById('excercise7');
+              const url= 'http://api.icndb.com/jokes/random';
+
+              fetch( url )
+              .then(function(responsetext) {
+                  return responsetext.json();
+              }).then(function(json){
+                console.log(json);
+                return data.innerHTML = json.value.joke;
+              }).catch(function() {
+                console.log("error");
+  
+              });
+
+
+
+
+
+            };
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+  </body>
+</html>

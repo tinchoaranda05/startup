@@ -1,4 +1,4 @@
-
+var Q = require('q');
 
 function fadein() {
         let elem = document.getElementById('excercise4');
@@ -83,12 +83,14 @@ const getJoke = () => {
 
 
 // exercise 9.
-
-function loadXMLDoc2(q= 'javascript') { 
+/*  I don't know what I'm doing anymore. I'm gonna sleep.
+    then read javascript's books or die trying. :) */
+function loadXMLDoc2() { 
+                let deferred = Q.defer();
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                   if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responsetext);
+                    return deferred.resolve(xhttp.responsetext);
                     //document.getElementById("excercise9").innerHTML =
                     //this.responseText;
                   }

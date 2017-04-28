@@ -80,3 +80,19 @@ const getDataAndPrint = (configObject) => {
 const getJoke = () => {
   getDataAndPrint(configCorrect)
 }
+
+
+// exercise 9.
+
+function loadXMLDoc2(q= 'javascript') { 
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responsetext);
+                    //document.getElementById("excercise9").innerHTML =
+                    //this.responseText;
+                  }
+                };
+                xhttp.open("GET", " https://api.github.com/search/repositories", true);
+                xhttp.send();
+}

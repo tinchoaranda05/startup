@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootcamp Globant</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-
-
-    <script>
-      function fadein() {
-        let elem = document.getElementById('excercise4');
-        elem.style.opacity = "1";
-      }
-    </script>
-
   </head>
 
   <body onload=" fadein()">
@@ -77,22 +68,7 @@
         <div class="row">
           <div class="col-md-6">
              <button class="btn btn-default" type="button" onclick="loadXMLDoc()">excercise6</button>
-
               <p id="excercise6"></p>
-
-              <script>
-              function loadXMLDoc() {
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("excercise6").innerHTML =
-                    this.responseText;
-                  }
-                };
-                xhttp.open("GET", "http://api.icndb.com/jokes/random", true);
-                xhttp.send();
-              }
-              </script>
           </div>
         </div>
       </div>
@@ -104,38 +80,13 @@
         <div class="row">
           <div class="col-md-6">
              <button class="btn btn-default" type="button" onclick="llamadoAjax()">excercise7</button>
-
             <p id="excercise7"></p>
-
-            <script>
-            function llamadoAjax(){
-
-              const data= document.getElementById('excercise7');
-              const url= 'http://api.icndb.com/jokes/random';
-
-              fetch( url )
-              .then(function(responsetext) {
-                  return responsetext.json();
-              }).then(function(json){
-                console.log(json);
-                return data.innerHTML = json.value.joke;
-              }).catch(function() {
-                console.log("error");
-  
-              });
-
-
-
-
-
-            };
-            </script>
-
           </div>
         </div>
       </div>
     </section>
 
-   
+  <script src="funciones.js"></script>
   </body>
+
 </html>

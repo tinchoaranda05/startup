@@ -74,13 +74,30 @@ function loadXMLDoc2() {
                   if (this.readyState == 4 && this.status == 200) {
                     const data = JSON.parse(this.response);
                     console.log(data);
-
+                    
                     var output = '';
+                    var df = document.createDocumentFragment(),
+                    ul = document.createElement('ul'),
+                    content,
+                    li;
+
                     for(i=0; i<data.items.length; i++) {
                       console.log(output += "Full Name: " + data.items[i].full_name);
                       output += "\n-----------------------------------------\n";
+                      const list = "<li>"+ data.items[i].full_name +"</li>";
+                      //document.getElementById("fullname").innerHTML = list;
+                      
+                      content = document.createTextNode(data.items[i].full_name);
+                      li = document.createElement('li');
+                      li.appendChild(content);
+                      ul.appendChild(li);
                     }
+                    df.appendChild(ul);
                     
+
+                    window.requestAnimationFrame(function(){
+                      exercise9.parentNode.replaceChild(df, exercise9);
+                    });
                   }
                 };
                 xhttp.open("GET", " https://api.github.com/search/repositories?q='javascript'", true);

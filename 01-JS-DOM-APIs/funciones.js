@@ -1,4 +1,3 @@
-var Q = require('q');
 
 function fadein() {
         let elem = document.getElementById('excercise4');
@@ -17,23 +16,6 @@ function loadXMLDoc() { // exercise 6.
                 xhttp.send();
 }
 
-
-function llamadoAjax(){
-
-              const data= document.getElementById('excercise7');
-              const url= 'http://api.icndb.com/jokes/random';
-
-              fetch( url )
-              .then(function(responsetext) {
-                  return responsetext.json();
-              }).then(function(json){
-                console.log(json);
-                return data.innerHTML = json.value.joke;
-              }).catch(function() {
-                console.log("error");
-  
-              });
-}
 
 
 //  Exercise 7. I think it's pretty accurate of what you spect.
@@ -83,18 +65,24 @@ const getJoke = () => {
 
 
 // exercise 9.
-/*  I don't know what I'm doing anymore. I'm gonna sleep.
-    then read javascript's books or die trying. :) */
+/*  I already got the full name as response. Still working on
+    the code to make it more easy to read and I'm trying to make
+    the list of names as exercise require. Stand by... */
 function loadXMLDoc2() { 
-                let deferred = Q.defer();
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                   if (this.readyState == 4 && this.status == 200) {
-                    return deferred.resolve(xhttp.responsetext);
-                    //document.getElementById("excercise9").innerHTML =
-                    //this.responseText;
+                    const data = JSON.parse(this.response);
+                    console.log(data);
+
+                    var output = '';
+                    for(i=0; i<data.items.length; i++) {
+                      console.log(output += "Full Name: " + data.items[i].full_name);
+                      output += "\n-----------------------------------------\n";
+                    }
+                    
                   }
                 };
-                xhttp.open("GET", " https://api.github.com/search/repositories", true);
+                xhttp.open("GET", " https://api.github.com/search/repositories?q='javascript'", true);
                 xhttp.send();
 }

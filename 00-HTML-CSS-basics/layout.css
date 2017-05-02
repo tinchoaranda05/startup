@@ -1,0 +1,107 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font: 100%/1.5 "Open Sans", sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 40rem) {
+  html { font-size: 112%; }
+}
+
+@media (min-width: 64rem) {
+  html { font-size: 120%; }
+}
+
+body {
+  background-color: #ffffff;
+  color: #555;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  position: relative;
+
+}
+
+
+.column { margin-bottom: 1.5rem; }
+
+@media (min-width: 40rem) {
+  .column {
+    float: left;
+    margin: 10;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .column.full { width: 100%; }
+  .column.two-thirds { width: 66.7%; }
+  .column.half { width: 50%; }
+  .column.third { width: 33.3%; }
+  .column.fourth { width: 25%; }
+  .column.flow-opposite { float: right; }
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+img {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+}
+
+/* Can't make the screen just for one image at time. Need to figurate out how to
+change that property and I think thats it. */
+
+
+/* fixed.. ish.. I left the new box's width exactly as its image but not 
+with image's height. */
+
+.screen { 
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  width: 100%;
+  max-width: 380px;
+  opacity: 0;
+  z-index: 1000;
+  transition: all 0.9s ease-in-out;
+  display: block;
+  color: #d3d3d3;
+}
+.column:hover .screen{
+  opacity: 1;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}

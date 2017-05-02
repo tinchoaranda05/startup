@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootcamp Globant</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-d8af8b7dd51ee94d7ab4f44b513e681da376a0e759768cc5e8888151ec02ab9c.css" integrity="sha256-2K+LfdUe6U16tPRLUT5oHaN2oOdZdozF6IiBUewCq5w=" media="all" rel="stylesheet" />
+  </head>
+
+  <body onload=" fadein()">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Practice!</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="excercise one">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="text-center">Excercise 1</h2>
+            <div class="separador"></div>
+            <p class="text-center">Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="image_0.png" class="center-block" alt="Logo html" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden">
+      <div class="container">
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+          <p>hello, world!</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" id="excercise4">
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+          <p>Ex.4 fade in!</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="excercise5">
+      <div class="row">
+        <div class="col-md-12">
+        <button class="btn btn-default" onclick="window.location.href='index.html'">Refresh</button>
+        </div>
+      </div>
+    </div>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+             <button class="btn btn-default" type="button" onclick="loadXMLDoc()">excercise6</button>
+              <p id="excercise6"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="exercise8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+             <button class="btn btn-default" type="button" onclick="getJoke()">Exercise 7 bis</button>
+            <div id="exercise7bis"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-8">
+            
+            <!-- exercise 10 done. Now you can search for any
+                repo. There is an issue with the second search. !-->
+
+            <input type="text" id="exercise10" />
+            
+            <button class="btn btn-default" type="button" onclick="loadXMLDoc2(exercise10.value)">Search</button>
+            <div id="exercise9">
+            
+            </div> 
+              
+          </div>
+
+          <!-- Exercise 12. Just testing. Not Finished! !-->
+          <div class="col-md-12"> 
+            <input type="text" id="columnas" placeholder="Numero de columnas" />
+            <input type="text" id="filas" placeholder="numero de filas" />
+            <button class="btn btn-default" type="button" onclick="tabla(columnas.value, filas.value)">Crear Tabla</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <script src="funciones.js"></script>
+  </body>
+
+</html>

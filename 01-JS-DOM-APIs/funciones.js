@@ -104,3 +104,37 @@ function loadXMLDoc2(search) {
                 xhttp.open("GET", url + search2, true);
                 xhttp.send();
 }
+
+/* This is just a testing. Not finished!! 
+    Exercise 12. Need to know what the exercise really ask about. */
+
+function tabla(columnas, filas) {
+  
+  const body = document.getElementsByTagName("body")[0];
+ 
+  const tabla   = document.createElement("table");
+  const tblBody = document.createElement("tbody");
+ 
+  for (var i = 0; i < filas; i++) {
+    // making the rows..
+    const fila = document.createElement("tr");
+ 
+    for (var j = 0; j < columnas; j++) {
+      // making a textnode and adding to a column
+      const celda = document.createElement("td");
+      const textoCelda = document.createTextNode("Row = "+i+", column = "+j);
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
+    }
+ 
+    // adding the row to the end of the Tablebody
+    tblBody.appendChild(fila);
+  }
+ 
+  // adding the tablebody to table
+  tabla.appendChild(tblBody);
+  // appends table into body
+  body.appendChild(tabla);
+  // Changing the border style of the table to 2.
+  tabla.setAttribute("border", "2");
+}

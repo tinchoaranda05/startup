@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Artists from './Artists';
 import Albums from './Albums';
 import Tracks from './Tracks';
+import Releases from './Releases';
 
 // -------------------------------------------
 
@@ -20,9 +21,6 @@ class SpotiApp extends React.Component {
 			ArtistID: '',
 			AlbumID: '',
 			SearchValue: '',
-			ArtistShow: false,
-			AlbumShow: false,
-			TrackShow: false,
 			mode: ''
 		}
 		this.handleChange= this.handleChange.bind(this)
@@ -41,6 +39,13 @@ class SpotiApp extends React.Component {
 			SearchValue: e.target.srch.value,
 			mode: 'artist'
 		})
+	}
+
+	searchReleases(e){
+		this.setState({
+			AlbumID: e,
+			mode: 'album'
+		})		
 	}
 
 	searchArtist(e){
@@ -64,28 +69,27 @@ class SpotiApp extends React.Component {
 			mode: ''
 		})	
 	}
-	
-	
-	
-	render(){
-		
-		return (
 
+	render(){
+		return (
 			<div className='container'>
 				<div className='row'>
 					<div className='col-md-8 col-md-offset-5 fadein'>
 						<h1 className=''>Search Artist</h1>
-						
 						<form className="navbar-form" onSubmit={this.handleSubmit} >
 						    <div className="input-group">
 						    	<input className="form-control" placeholder="Search" name="srch" id="srch" type="text" value={this.state.ArtistName} onChange={this.handleChange} />
 						    	<div className="input-group-btn">
 						        	<button className="btn btn-default btn-info" type="submit"><i className="glyphicon glyphicon-search"></i>	
 						        	</button>
-
 						    	</div>
 	    					</div>
 	  					</form>
+					</div>
+				</div>
+				<div className='row'>
+					<div>
+						{this.state.mode ==='releases' ? <Releases getReleases={this.searchReleases} /> : null }
 					</div>
 				</div>
 				<div className='row'>
@@ -105,11 +109,9 @@ class SpotiApp extends React.Component {
 					</div>
 				</div>
 			</div>
-		
-	)}
+		)
+	}
 }
-
-
 
 ReactDOM.render(
   <SpotiApp />,

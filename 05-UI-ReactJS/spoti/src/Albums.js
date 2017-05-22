@@ -31,32 +31,28 @@ export default class Albums extends React.Component {
 
 	handleAlbum(e){
 		this.props.getAlbum(e.target);
-		this.setState({
-			TrackShow: true
-		})
 	}
 
 	render(){
 		return(
 			<div className='container fadein'>
-			{this.state.AlbumShow ? this.searchAlbum() : null}
+				{this.state.AlbumShow ? this.searchAlbum() : null}
 				<div className='row'>
 					<div className='col-md-12'>
 						<h2 className='text-center'>Albums</h2>
 					</div>
 				</div>
-			{this.state.AlbumList.map((data, number) =>{
-				return (
-					<div key={number} className='col-md-3'>
-						<a>
-							<img onClick={this.handleAlbum} id={data.id} className='img-thumbnail img-responsive imagen center-block' alt={data.images[0].url} src={data.images[0].url} />
-							<div className='caption'>
-								<p className='text-center link'>{data.name}</p>
-							</div>
-						</a>
-					</div>
-					
-			)})}	
+				{this.state.AlbumList.map((data, number) =>{
+					return (
+						<div key={number} className='col-md-3'>
+							<a className='link'>
+								<img onClick={this.handleAlbum} id={data.id} className='img-thumbnail img-responsive imagen center-block' alt={data.name} src={data.images[0] ? data.images[0].url : 'https://cdn.shopify.com/s/files/1/0972/6232/files/no-image-placeholder.png'} />
+								<div className='caption'>
+									<p className='text-center link'>{data.name}</p>
+								</div>
+							</a>
+						</div>	
+				)})}	
 			</div>
 		)
 	}

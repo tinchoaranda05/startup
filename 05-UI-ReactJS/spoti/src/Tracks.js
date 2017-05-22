@@ -29,33 +29,33 @@ export default class Tracks extends React.Component {
 	}
 
 	render(){
-
-		
-
 		return(
 			<div className='container fadein'>
-			{this.state.TrackShow ? this.searchTrack() : null}
+				{this.state.TrackShow ? this.searchTrack() : null}
 				<div className='row'>
 					<div className='col-md-12'>
 						<h2 className='text-center'>Songs</h2>
-					</div>
-				</div>
-			{this.state.TrackList.map((data, number) =>{
-				return (
-					<div key={number} className='col-md-4'>
-						<a href={data.external_urls.spotify} target="_blank">
-							<img className='img-thumbnail img-responsive imagen center-block' 
+						<img className='img-responsive center-block' 
 								alt={'k'} 
 								src={this.props.url} />
-							<div className='caption'>
-								<p className='text-center link'>{data.name}</p>
-							</div>
-							<audio controls="controls" src={data.preview_url}>
-							</audio>
-						</a>
 					</div>
-					
-			)})}	
+				</div>
+				<div className='row'>
+					{this.state.TrackList.map((data, number) =>{
+						return (
+							<ul key={number} className='col-md-12'>
+								<a href={data.external_urls.spotify} target="_blank" className='link'>
+									
+									<li className='caption'>
+										<p className='link'>{data.name}</p>
+										
+									</li>
+								</a>
+								<audio className='audio' controls="controls" src={data.preview_url}>
+								hol</audio>
+							</ul>		
+					)})}
+				</div>	
 			</div>
 		)
 	}

@@ -1,16 +1,4 @@
-
-var SpotifyWebApi = require('spotify-web-api-node');
-
-//	aca estas instanciando el nodo que bajaste recien
-//	y le asignas las credenciales que son opcionales
-//	pero necesitas esta variable para despues llamar a las
-//	funciones del nodo, entendes?
-var spotifyApi = new SpotifyWebApi({
-  clientId : 'fcecfc72172e4cd267473117a17cbd4d',
-  clientSecret : 'a6338157c9bb5ac9c71924cb2940e1a7',
-  redirectUri : 'http://www.example.com/callback'
-});
-
+import React from 'react';
 
 export default class Albums extends React.Component {
 	constructor(){
@@ -24,34 +12,34 @@ export default class Albums extends React.Component {
 	}
 
 	searchAlbum(){
-		spotifyApi.getArtistAlbums(this.props.id, {limit: 8, offset: 20})
-  		.then((data) => {
-  			this.state.AlbumList.push(data.body.items)
-  			this.setState({
-  				AlbumList: this.state.AlbumList[0],
-  				AlbumShow: false
-  			})
-  			
-  		}, (err) =>{
-    		console.error(err);
-  		});	
+		var prom= this.props.id;
+        fetch('https://api.spotify.com/v1/artists/' + prom + '/albums')
+        .then((data) => {
+        	return data.json();
+        })
+        .then((data) => {
+        	this.state.AlbumList.push(data.items)
+        	this.setState({
+        		AlbumList: this.state.AlbumList[0],
+        		AlbumShow: false
+        	})
+        })
+        .catch((err) => {
+        	console.log(err);
+        })
 	}
 
 	handleAlbum(e){
-		
-		this.props.getAlbum(e.target.id);
+		this.props.getAlbum(e.target);
 		this.setState({
 			TrackShow: true
 		})
 	}
 
-
 	render(){
-
-		this.state.AlbumShow ? this.searchAlbum() : null
-
 		return(
-			<div className='container'>
+			<div className='container fadein'>
+			{this.state.AlbumShow ? this.searchAlbum() : null}
 				<div className='row'>
 					<div className='col-md-12'>
 						<h2 className='text-center'>Albums</h2>

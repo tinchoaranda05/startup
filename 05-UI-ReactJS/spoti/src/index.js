@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Artists from 'Artists';
-import Albums from 'Albums';
-import Tracks from 'Tracks';
+import Artists from './Artists';
+import Albums from './Albums';
+import Tracks from './Tracks';
 
 // -------------------------------------------
 
@@ -23,10 +23,11 @@ class SpotiApp extends React.Component {
 			ArtistShow: false,
 			AlbumShow: false,
 			TrackShow: false,
+			mode: ''
 		}
 		this.handleChange= this.handleChange.bind(this)
 		this.handleSubmit= this.handleSubmit.bind(this)
-		this.searchFor= this.searchFor.bind(this)
+		this.searchArtist= this.searchArtist.bind(this)
 		this.searchAlbum= this.searchAlbum.bind(this)
 	}
 
@@ -38,34 +39,30 @@ class SpotiApp extends React.Component {
 		e.preventDefault();
 		this.setState({
 			SearchValue: e.target.srch.value,
-			ArtistShow: true
+			mode: 'artist'
 		})
 	}
 
-	searchFor(e){
+	searchArtist(e){
 		this.setState({
 			ArtistID: e,
-			AlbumShow: true,
-			ArtistShow: false
-		})
-		
+			mode: 'album'
+		})		
 	}
 
 	searchAlbum(e){
 		this.setState({
-			AlbumID: e,
-			TrackShow: true,
-			AlbumShow: false
-		})
-		
+			AlbumID: e.id,
+			AlbumURL: e.src,
+			mode: 'track'
+		})	
 	}
 
 	searchTrack(e){
 		this.setState({
 			AlbumID: e,
-			TrackShow: false
-		})
-		
+			mode: ''
+		})	
 	}
 	
 	
@@ -76,7 +73,7 @@ class SpotiApp extends React.Component {
 
 			<div className='container'>
 				<div className='row'>
-					<div className='col-md-8 col-md-offset-5'>
+					<div className='col-md-8 col-md-offset-5 fadein'>
 						<h1 className=''>Search Artist</h1>
 						
 						<form className="navbar-form" onSubmit={this.handleSubmit} >
@@ -93,18 +90,18 @@ class SpotiApp extends React.Component {
 				</div>
 				<div className='row'>
 					<div>
-						{this.state.ArtistShow ? <Artists name={this.state.SearchValue} getArtist={this.searchFor} /> : null }
+						{this.state.mode ==='artist' ? <Artists name={this.state.SearchValue} getArtist={this.searchArtist} /> : null }
 					</div>
 				</div>
 				<div className='row'>
 					<div>
-						{this.state.AlbumShow ? <Albums id={this.state.ArtistID} getAlbum={this.searchAlbum} /> : null }
+						{this.state.mode ==='album' ? <Albums id={this.state.ArtistID} getAlbum={this.searchAlbum} /> : null }
 					</div>
 				</div>
 
 				<div className='row'>
 					<div>
-						{this.state.TrackShow ? <Tracks id={this.state.AlbumID} getTrack={this.searchTrack} /> : null }
+						{this.state.mode ==='track' ? <Tracks id={this.state.AlbumID} url={this.state.AlbumURL} getTrack={this.searchTrack} /> : null }
 					</div>
 				</div>
 			</div>

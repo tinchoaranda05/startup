@@ -1,3 +1,4 @@
+import React from 'react';
 
 export default class Tracks extends React.Component {
 	constructor(){
@@ -10,25 +11,30 @@ export default class Tracks extends React.Component {
 	}
 
 	searchTrack(){
-		spotifyApi.getAlbumTracks(this.props.id)
-  		.then((data) => {
-  			this.state.TrackList.push(data.body.items)
-  			this.setState({
-  				TrackList: this.state.TrackList[0],
-  				TrackShow: false
-  			})
-  			
-  		}, (err) =>{
-    		console.error(err);
-  		});	
+		var prom= this.props.id;
+        fetch('https://api.spotify.com/v1/albums/' + prom + '/tracks')
+        .then((data) => {
+        	return data.json();
+        })
+        .then((data) => {
+        	this.state.TrackList.push(data.items)
+        	this.setState({
+        		TrackList: this.state.TrackList[0],
+        		TrackShow: false
+        	})
+        })
+        .catch((err) => {
+        	console.log(err);
+        })
 	}
 
 	render(){
 
-		this.state.TrackShow ? this.searchTrack() : null
+		
 
 		return(
-			<div className='container'>
+			<div className='container fadein'>
+			{this.state.TrackShow ? this.searchTrack() : null}
 				<div className='row'>
 					<div className='col-md-12'>
 						<h2 className='text-center'>Songs</h2>
@@ -36,14 +42,17 @@ export default class Tracks extends React.Component {
 				</div>
 			{this.state.TrackList.map((data, number) =>{
 				return (
-					<div key={number} className='col-md-4 spoti'>
-
-						<div className='caption'>
-							<p className='link'>Song: {data.name}</p>
-						</div>
-						<audio controls="controls" src={data.preview_url}>
-						</audio>
-						<a href={data.external_urls.spotify} target="_blank"><span className='glyphicon glyphicon-download'></span></a>
+					<div key={number} className='col-md-4'>
+						<a href={data.external_urls.spotify} target="_blank">
+							<img className='img-thumbnail img-responsive imagen center-block' 
+								alt={'k'} 
+								src={this.props.url} />
+							<div className='caption'>
+								<p className='text-center link'>{data.name}</p>
+							</div>
+							<audio controls="controls" src={data.preview_url}>
+							</audio>
+						</a>
 					</div>
 					
 			)})}	
@@ -51,4 +60,3 @@ export default class Tracks extends React.Component {
 		)
 	}
 }
-module.exports= Tracks

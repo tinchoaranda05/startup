@@ -51,3 +51,15 @@ a:focus {
 .link:hover {
 	text-decoration: none;
 }
+
+.fadein {
+    -webkit-animation: fadeinout 3s;
+    animation: fadeinout 3s;
+  }
+
+  @-webkit-keyframes fadeinout {
+    0%, 5% {opacity: 0;}
+  }
+  @keyframes fadeinout {
+    0%, 5% {opacity: 0;}
+  }
